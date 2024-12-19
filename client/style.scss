@@ -136,17 +136,4 @@ button {
     }
 }
 
-
 /* div contenant les phrases */
-#newDiv {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: $backgroundColor;
-    color: black;
-    padding: 15px;
-    border-radius: 10px;
-    z-index: 10000;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-    font-family: Rethink Sans;
-}

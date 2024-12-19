@@ -4,7 +4,7 @@ console.log("za marche")
 let alarmListenerAdded = false;
 
 // On ecoute les "messages" entrants venant du popup.js ou content script lorsqu'on clique sur le bouton on/off des phrases bien-être
-chrome.runtime.onMessage.addListener(function(request) {  // On vérifie  si le message reçu contient l'action "goodVibeButtonClick"
+chrome.runtime.onMessage.addListener(function (request) {  // On vérifie  si le message reçu contient l'action "goodVibeButtonClick"
     if (request.action === "goodVibeButtonClick") {
         sendGoodVibeMessage(); // appel de la fonction pour envoyer le message au content script
     }
@@ -12,9 +12,9 @@ chrome.runtime.onMessage.addListener(function(request) {  // On vérifie  si le 
 
 
 //GESTION DES CITATIONS DE CHUCK NORRIS 
-chrome.runtime.onMessage.addListener(function(request) {  
+chrome.runtime.onMessage.addListener(function (request) {
     if (request.action === "chuckButtonClick") {
-        sendChuckMessage(); 
+        sendChuckMessage();
     }
 });
 
@@ -27,7 +27,7 @@ function createNotification(message) {
         title: 'Reminder',
         message: message,
         priority: 2
-    }, function(notificationId) { // log pour s'assurer des échanges entre background et popup
+    }, function (notificationId) { // log pour s'assurer des échanges entre background et popup
         if (chrome.runtime.lastError) {
             console.error('Erreur lors de la création de la notification :', chrome.runtime.lastError.message);
         } else {
@@ -46,7 +46,7 @@ chrome.runtime.onMessage.addListener((message) => {
         chrome.alarms.create('reminderAlarm', { when: dateTime });
 
         // Stocke le message du rappel pour le récupérer lors de l'alarme
-        chrome.storage.local.set({ reminderMessage }, function() {
+        chrome.storage.local.set({ reminderMessage }, function () {
             // Vérifie s'il y a une erreur lors du stockage du message
             if (chrome.runtime.lastError) {
                 console.error('Erreur lors du stockage du message de rappel :', chrome.runtime.lastError);
